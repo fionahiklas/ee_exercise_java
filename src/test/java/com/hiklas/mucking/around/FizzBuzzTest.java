@@ -289,6 +289,35 @@ public class FizzBuzzTest
         assertThat(result, equalTo("fizzbuzz"));
     }
 
+    @Test
+    public void processOneNumber_fourStepsJustFizz()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByThreeFunction(),
+                fizzBuzzToTest.divideByFiveFunction(),
+                fizzBuzzToTest.stopIfAlreadyHaveResult(),
+                fizzBuzzToTest.returnNumberAsString()
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(27, steps);
+
+        assertThat(result, equalTo("fizz"));
+    }
+
+    @Test
+    public void processOneNumber_fourStepsJustBuzz()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByThreeFunction(),
+                fizzBuzzToTest.divideByFiveFunction(),
+                fizzBuzzToTest.stopIfAlreadyHaveResult(),
+                fizzBuzzToTest.returnNumberAsString()
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(50, steps);
+
+        assertThat(result, equalTo("buzz"));
+    }
 
     /**
      * Utility method to create a list of steps

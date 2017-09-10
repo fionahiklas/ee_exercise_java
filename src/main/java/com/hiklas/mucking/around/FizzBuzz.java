@@ -32,6 +32,7 @@ public class FizzBuzz
                 if( stepResult.isPresent() ) outputBuffer.append( stepResult.get() );
             }
 
+            // TODO: Refactor the inside of this if into a private function to tidy things up
             if( step instanceof Predicate) {
                 Predicate<StringBuffer> stepPredicate = (Predicate<StringBuffer>) step;
                 boolean shouldStop = stepPredicate.test(outputBuffer);
