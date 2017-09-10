@@ -9,6 +9,13 @@ public class FizzBuzz
     public static final String FIZZ="fizz";
     public static final String BUZZ="buzz";
 
+    /**
+     * Return a function that tests whether the given number is
+     * divisible by three.  If it is then an output string is returned,
+     * in the Optional result, otherwise this is empty
+     *
+     * @return
+     */
     protected Function<Integer, Optional<String>> divideByThreeFunction()
     {
         return (numberToTransform) -> {
@@ -17,6 +24,13 @@ public class FizzBuzz
         };
     }
 
+    /**
+     * Return a function that tests whether the given number is
+     * divisible by five.  If it is then an output string is returned,
+     * in the Optional result, otherwise this is empty
+     *
+     * @return
+     */
     protected Function<Integer, Optional<String>> divideByFiveFunction()
     {
         return (numberToTransform) -> {
@@ -24,6 +38,20 @@ public class FizzBuzz
             else return Optional.empty();
         };
     }
+
+    /**
+     * Return a function that performs a dummy operation, it returns a
+     * string version of the number that is passed to it.
+     *
+     * @return
+     */
+    protected Function<Integer, Optional<String>> returnNumberAsString()
+    {
+        return (numberToTransform) -> {
+          return null;
+        };
+    }
+
 
     /**
      * Check if the numberToTest can be divided equally by the divisor,
