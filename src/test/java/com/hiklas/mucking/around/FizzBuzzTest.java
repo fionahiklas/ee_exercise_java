@@ -3,6 +3,9 @@ package com.hiklas.mucking.around;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -154,6 +157,57 @@ public class FizzBuzzTest
     {
         boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("fizzbuzz");
         assertThat(result, equalTo(true));
+    }
+
+    @Test
+    public void processOneNumber_emptySteps()
+    {
+        List<Object> steps = createSteps();
+        String result = fizzBuzzToTest.processOneNumberWithSteps(1, steps);
+
+        assertThat(result, equalTo(""));
+    }
+
+    @Test
+    public void processOneNumber_singleStepDefault()
+    {
+        List<Object> steps = createSteps(fizzBuzzToTest.returnNumberAsString());
+        String result = fizzBuzzToTest.processOneNumberWithSteps(1, steps);
+
+        assertThat(result, equalTo("1"));
+    }
+
+    @Test
+    public void processOneNumber_singleStepFizz()
+    {
+        List<Object> steps = createSteps(fizzBuzzToTest.divideByThreeFunction());
+        String result = fizzBuzzToTest.processOneNumberWithSteps(3, steps);
+
+        assertThat(result, equalTo("fizz"));
+    }
+
+    @Test
+    public void processOneNumber_singleStepBuzz()
+    {
+        List<Object> steps = createSteps(fizzBuzzToTest.divideByFiveFunction());
+        String result = fizzBuzzToTest.processOneNumberWithSteps(5, steps);
+
+        assertThat(result, equalTo("buzz"));
+    }
+
+    @Test
+    public void processOneNumber_singleStepNoBuzz()
+    {
+        List<Object> steps = createSteps(fizzBuzzToTest.divideByFiveFunction());
+        String result = fizzBuzzToTest.processOneNumberWithSteps(3, steps);
+
+        assertThat(result, equalTo(""));
+    }
+
+    private List<Object> createSteps(Object... steps)
+    {
+        List<Object> result = new ArrayList<>(Arrays.asList(steps));
+        return result;
     }
 
 }

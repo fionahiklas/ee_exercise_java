@@ -1,6 +1,7 @@
 package com.hiklas.mucking.around;
 
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -9,6 +10,30 @@ public class FizzBuzz
 {
     public static final String FIZZ="fizz";
     public static final String BUZZ="buzz";
+
+    /**
+     * Take one number and figure out what the output should be
+     *
+     * @param numberToProcess
+     * @param stepsToCheck
+     * @return
+     */
+    public String processOneNumberWithSteps(Integer numberToProcess, List<Object> stepsToCheck)
+    {
+        StringBuffer outputBuffer = new StringBuffer();
+
+        for(Object step:stepsToCheck)
+        {
+            if( step instanceof Function) {
+                Function<Integer, Optional<String>> stepFunction = (Function<Integer, Optional<String>>) step;
+                Optional<String> stepResult = stepFunction.apply(numberToProcess);
+
+                if( stepResult.isPresent() ) outputBuffer.append( stepResult.get() );
+            }
+        }
+
+        return outputBuffer.toString();
+    }
 
     /**
      * Return a function that tests whether the given number is
