@@ -85,5 +85,37 @@ public class FizzBuzzTest
         assertThat(result.get(), equalTo(FizzBuzz.BUZZ));
     }
 
+    @Test
+    public void divideByThreeFunction_returnsNonEmptyFor15()
+    {
+        Optional<String> result = fizzBuzzToTest.divideByThreeFunction().apply(15);
+        assertThat(result.isPresent(), equalTo(true));
+        assertThat(result.get(), equalTo(FizzBuzz.FIZZ));
+    }
+
+    @Test
+    public void divideByFiveFunction_returnsNonEmptyFor15()
+    {
+        Optional<String> result = fizzBuzzToTest.divideByFiveFunction().apply(15);
+        assertThat(result.isPresent(), equalTo(true));
+        assertThat(result.get(), equalTo(FizzBuzz.BUZZ));
+    }
+
+    @Test
+    public void returnNumberAsStringFunctionReturned()
+    {
+        Object returnNumberAsString = fizzBuzzToTest.returnNumberAsString();
+
+        assertThat(returnNumberAsString, notNullValue());
+        assertThat(returnNumberAsString, instanceOf(Function.class));
+    }
+
+    @Test
+    public void returnNumberAsStringFunction_returnsNonEmptyForZero()
+    {
+        Optional<String> result = fizzBuzzToTest.returnNumberAsString().apply(0);
+        assertThat(result.isPresent(), equalTo(true));
+        assertThat(result.get(), equalTo("0"));
+    }
 
 }

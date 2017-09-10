@@ -47,9 +47,7 @@ public class FizzBuzz
      */
     protected Function<Integer, Optional<String>> returnNumberAsString()
     {
-        return (numberToTransform) -> {
-          return null;
-        };
+        return (numberToTransform) -> Optional.of(Integer.toString(numberToTransform));
     }
 
 
