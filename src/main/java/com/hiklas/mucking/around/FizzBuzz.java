@@ -24,6 +24,7 @@ public class FizzBuzz
 
         for(Object step:stepsToCheck)
         {
+            // TODO: Refactor the inside of this if into a private function to tidy things up
             if( step instanceof Function) {
                 Function<Integer, Optional<String>> stepFunction = (Function<Integer, Optional<String>>) step;
                 Optional<String> stepResult = stepFunction.apply(numberToProcess);

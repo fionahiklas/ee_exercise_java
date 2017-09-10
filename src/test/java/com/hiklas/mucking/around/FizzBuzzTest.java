@@ -204,10 +204,55 @@ public class FizzBuzzTest
         assertThat(result, equalTo(""));
     }
 
+    @Test
+    public void processOneNumber_twoStepNoFizzBuzz()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByThreeFunction(),
+                fizzBuzzToTest.divideByFiveFunction()
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(1, steps);
+
+        assertThat(result, equalTo(""));
+    }
+
+    @Test
+    public void processOneNumber_twoStepFizzBuzz()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByThreeFunction(),
+                fizzBuzzToTest.divideByFiveFunction()
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(15, steps);
+
+        assertThat(result, equalTo("fizzbuzz"));
+    }
+
+    @Test
+    public void processOneNumber_twoStepBuzzFizz()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByFiveFunction(),
+                fizzBuzzToTest.divideByThreeFunction()
+
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(15, steps);
+
+        assertThat(result, equalTo("buzzfizz"));
+    }
+
+    /**
+     * Utility method to create a list of steps
+     *
+     * @param steps
+     * @return
+     */
     private List<Object> createSteps(Object... steps)
     {
         List<Object> result = new ArrayList<>(Arrays.asList(steps));
         return result;
     }
-
 }
