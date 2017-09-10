@@ -20,7 +20,7 @@ public class FizzBuzz
     protected Function<Integer, Optional<String>> divideByFiveFunction()
     {
         return (numberToTransform) -> {
-            if ( checkModulusOrZero(numberToTransform, 5)) return Optional.of(FIZZ);
+            if ( checkModulusOrZero(numberToTransform, 5)) return Optional.of(BUZZ);
             else return Optional.empty();
         };
     }

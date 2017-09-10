@@ -74,13 +74,15 @@ public class FizzBuzzTest
     {
         Optional<String> result = fizzBuzzToTest.divideByThreeFunction().apply(3);
         assertThat(result.isPresent(), equalTo(true));
+        assertThat(result.get(), equalTo(FizzBuzz.FIZZ));
     }
 
     @Test
-    public void divideByFiveFunction_returnsNoneEmptyForFive()
+    public void divideByFiveFunction_returnsNonEmptyForFive()
     {
         Optional<String> result = fizzBuzzToTest.divideByFiveFunction().apply(5);
         assertThat(result.isPresent(), equalTo(true));
+        assertThat(result.get(), equalTo(FizzBuzz.BUZZ));
     }
 
 
