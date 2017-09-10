@@ -134,28 +134,28 @@ public class FizzBuzzTest
     @Test
     public void stopIfAlreadyHaveResult_returnFalseOnEmptyString()
     {
-        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("");
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test(new StringBuffer(""));
         assertThat(result, equalTo(false));
     }
 
     @Test
     public void stopIfAlreadyHaveResult_returnTrueOnOneCharacter()
     {
-        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("A");
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test(new StringBuffer("A"));
         assertThat(result, equalTo(true));
     }
 
     @Test
     public void stopIfAlreadyHaveResult_returnTrueOnNumber()
     {
-        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("1");
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test(new StringBuffer("1"));
         assertThat(result, equalTo(true));
     }
 
     @Test
     public void stopIfAlreadyHaveResult_returnTrueOnFizzBuzz()
     {
-        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("fizzbuzz");
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test(new StringBuffer("fizzbuzz"));
         assertThat(result, equalTo(true));
     }
 
@@ -243,6 +243,52 @@ public class FizzBuzzTest
 
         assertThat(result, equalTo("buzzfizz"));
     }
+
+    @Test
+    public void processOneNumber_threeStepsBuzzNoFizz()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByFiveFunction(),
+                fizzBuzzToTest.stopIfAlreadyHaveResult(),
+                fizzBuzzToTest.divideByThreeFunction()
+
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(15, steps);
+
+        assertThat(result, equalTo("buzz"));
+    }
+
+    @Test
+    public void processOneNumber_fourStepsJustNumber()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByFiveFunction(),
+                fizzBuzzToTest.divideByThreeFunction(),
+                fizzBuzzToTest.stopIfAlreadyHaveResult(),
+                fizzBuzzToTest.returnNumberAsString()
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(7, steps);
+
+        assertThat(result, equalTo("7"));
+    }
+
+    @Test
+    public void processOneNumber_fourStepsFizzBuzz()
+    {
+        List<Object> steps = createSteps(
+                fizzBuzzToTest.divideByThreeFunction(),
+                fizzBuzzToTest.divideByFiveFunction(),
+                fizzBuzzToTest.stopIfAlreadyHaveResult(),
+                fizzBuzzToTest.returnNumberAsString()
+        );
+
+        String result = fizzBuzzToTest.processOneNumberWithSteps(30, steps);
+
+        assertThat(result, equalTo("fizzbuzz"));
+    }
+
 
     /**
      * Utility method to create a list of steps

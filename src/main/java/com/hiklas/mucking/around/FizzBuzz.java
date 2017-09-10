@@ -31,6 +31,14 @@ public class FizzBuzz
 
                 if( stepResult.isPresent() ) outputBuffer.append( stepResult.get() );
             }
+
+            if( step instanceof Predicate) {
+                Predicate<StringBuffer> stepPredicate = (Predicate<StringBuffer>) step;
+                boolean shouldStop = stepPredicate.test(outputBuffer);
+
+                if( shouldStop ) break;
+            }
+
         }
 
         return outputBuffer.toString();
@@ -77,7 +85,7 @@ public class FizzBuzz
         return (numberToTransform) -> Optional.of(Integer.toString(numberToTransform));
     }
 
-    protected Predicate<String> stopIfAlreadyHaveResult()
+    protected Predicate<StringBuffer> stopIfAlreadyHaveResult()
     {
         return (currentResult) -> (currentResult != null && currentResult.length() > 0);
     }
