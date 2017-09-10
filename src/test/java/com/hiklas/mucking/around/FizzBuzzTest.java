@@ -28,4 +28,13 @@ public class FizzBuzzTest
         assertThat(divideByThree, notNullValue());
         assertThat(divideByThree, instanceOf(Function.class));
     }
+
+    @Test
+    public void divideByFiveDetectFunctionReturned()
+    {
+        Object divideByFive = fizzBuzzToTest.divideByFiveFunction();
+
+        assertThat(divideByFive, notNullValue());
+        assertThat(divideByFive, instanceOf(Function.class));
+    }
 }
