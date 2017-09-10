@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
@@ -116,6 +117,43 @@ public class FizzBuzzTest
         Optional<String> result = fizzBuzzToTest.returnNumberAsString().apply(0);
         assertThat(result.isPresent(), equalTo(true));
         assertThat(result.get(), equalTo("0"));
+    }
+
+    @Test
+    public void stopIfAlreadyHaveResultFunctionReturned()
+    {
+        Object returnNumberAsString = fizzBuzzToTest.stopIfAlreadyHaveResult();
+
+        assertThat(returnNumberAsString, notNullValue());
+        assertThat(returnNumberAsString, instanceOf(Predicate.class));
+    }
+
+    @Test
+    public void stopIfAlreadyHaveResult_returnFalseOnEmptyString()
+    {
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("");
+        assertThat(result, equalTo(false));
+    }
+
+    @Test
+    public void stopIfAlreadyHaveResult_returnTrueOnOneCharacter()
+    {
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("A");
+        assertThat(result, equalTo(true));
+    }
+
+    @Test
+    public void stopIfAlreadyHaveResult_returnTrueOnNumber()
+    {
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("1");
+        assertThat(result, equalTo(true));
+    }
+
+    @Test
+    public void stopIfAlreadyHaveResult_returnTrueOnFizzBuzz()
+    {
+        boolean result = fizzBuzzToTest.stopIfAlreadyHaveResult().test("fizzbuzz");
+        assertThat(result, equalTo(true));
     }
 
 }

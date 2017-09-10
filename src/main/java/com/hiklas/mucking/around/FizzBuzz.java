@@ -3,6 +3,7 @@ package com.hiklas.mucking.around;
 
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class FizzBuzz
 {
@@ -50,6 +51,10 @@ public class FizzBuzz
         return (numberToTransform) -> Optional.of(Integer.toString(numberToTransform));
     }
 
+    protected Predicate<String> stopIfAlreadyHaveResult()
+    {
+        return (currentResult) -> (currentResult != null && currentResult.length() > 0);
+    }
 
     /**
      * Check if the numberToTest can be divided equally by the divisor,
@@ -64,4 +69,6 @@ public class FizzBuzz
     {
        return (numberToTest != 0 && numberToTest % divisor == 0);
     }
+
+
 }
