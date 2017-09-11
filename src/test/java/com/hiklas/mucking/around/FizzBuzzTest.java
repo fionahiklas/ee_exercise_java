@@ -319,6 +319,13 @@ public class FizzBuzzTest
         assertThat(result, equalTo("buzz"));
     }
 
+    @Test
+    public void processStringOfNumbers_returnsEmptyStringForEmptyInput()
+    {
+        String result = fizzBuzzToTest.processStringOfNumbers("");
+        assertThat(result, notNullValue());
+    }
+
     /**
      * Utility method to create a list of steps
      *

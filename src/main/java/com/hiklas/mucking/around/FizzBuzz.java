@@ -12,6 +12,22 @@ public class FizzBuzz
     public static final String BUZZ="buzz";
 
     /**
+     * Process a string that is expected to contain integers seperated by
+     * spaces.  Pass each number to the the {@link #processStringOfNumbers(String)}
+     * method and collect the results as a space-seperated string
+     *
+     * @param stringOfNumbers
+     * @return
+     */
+    public String processStringOfNumbers(String stringOfNumbers)
+    {
+        StringBuffer outputBuffer = new StringBuffer();
+
+        return outputBuffer.toString();
+    }
+
+
+    /**
      * Take one number and figure out what the output should be
      *
      * @param numberToProcess
@@ -31,7 +47,7 @@ public class FizzBuzz
             }
 
             if( step instanceof Predicate) {
-                
+
                 if( processStepPredicate(step, outputBuffer) ) break;
             }
 
