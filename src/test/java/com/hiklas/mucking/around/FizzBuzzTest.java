@@ -326,6 +326,38 @@ public class FizzBuzzTest
         assertThat(result, notNullValue());
     }
 
+    @Test
+    public void processStringOfNumbers_returnsZeroForZeroInput()
+    {
+        String result = fizzBuzzToTest.processStringOfNumbers("0");
+        assertThat(result, notNullValue());
+        assertThat(result, equalTo("0"));
+    }
+
+    @Test
+    public void processStringOfNumbers_returnsFizzForThreeInput()
+    {
+        String result = fizzBuzzToTest.processStringOfNumbers("3");
+        assertThat(result, notNullValue());
+        assertThat(result, equalTo("fizz"));
+    }
+
+    @Test
+    public void processStringOfNumbers_returnsBuzzForFiveInput()
+    {
+        String result = fizzBuzzToTest.processStringOfNumbers("5");
+        assertThat(result, notNullValue());
+        assertThat(result, equalTo("buzz"));
+    }
+
+    @Test
+    public void processStringOfNumbers_returnsFizzBuzzForFifteenInput()
+    {
+        String result = fizzBuzzToTest.processStringOfNumbers("15");
+        assertThat(result, notNullValue());
+        assertThat(result, equalTo("fizzbuzz"));
+    }
+
     /**
      * Utility method to create a list of steps
      *

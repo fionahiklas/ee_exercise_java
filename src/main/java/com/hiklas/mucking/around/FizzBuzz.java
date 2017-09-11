@@ -1,8 +1,10 @@
 package com.hiklas.mucking.around;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.StringTokenizer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -10,6 +12,14 @@ public class FizzBuzz
 {
     public static final String FIZZ="fizz";
     public static final String BUZZ="buzz";
+
+    private final List<Object> STEPS = new ArrayList<Object>()
+    {{
+       add( divideByThreeFunction() );
+       add( divideByFiveFunction() );
+       add( stopIfAlreadyHaveResult() );
+       add( returnNumberAsString() );
+    }};
 
     /**
      * Process a string that is expected to contain integers seperated by
@@ -22,6 +32,19 @@ public class FizzBuzz
     public String processStringOfNumbers(String stringOfNumbers)
     {
         StringBuffer outputBuffer = new StringBuffer();
+        StringTokenizer tokeniser = new StringTokenizer(stringOfNumbers, " ");
+        String item = null;
+        Integer itemAsInteger = null;
+
+        while(tokeniser.hasMoreTokens())
+        {
+            item = tokeniser.nextToken();
+            itemAsInteger = Integer.parseInt(item);
+
+            outputBuffer.append(
+              processOneNumberWithSteps(itemAsInteger, STEPS)
+            );
+        }
 
         return outputBuffer.toString();
     }
