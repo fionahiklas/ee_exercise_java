@@ -14,6 +14,30 @@ public class FizzBuzzLuckCount extends FizzBuzzLuck {
     @Override
     public String processOneNumberWithSteps(Integer numberToProcess, List<Object> stepsToCheck) {
         String result = super.processOneNumberWithSteps(numberToProcess, stepsToCheck);
+
+        switch (result)
+        {
+            case "luck":
+                luckCount++;
+                break;
+
+            case "fizzbuzz":
+                fizzBuzzCount++;
+                break;
+
+            case "fizz":
+                fizzCount++;
+                break;
+
+            case "buzz":
+                buzzCount++;
+                break;
+
+            default:
+                digitCount++;
+                break;
+        }
+
         return result;
     }
 
