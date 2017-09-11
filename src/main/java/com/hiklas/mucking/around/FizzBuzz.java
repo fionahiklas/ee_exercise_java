@@ -44,7 +44,7 @@ public class FizzBuzz
             itemAsInteger = Integer.parseInt(item);
 
             outputBuffer.append(
-              processOneNumberWithSteps(itemAsInteger, STEPS)
+              processOneNumberWithSteps(itemAsInteger, getSteps())
             );
         }
 
@@ -113,12 +113,6 @@ public class FizzBuzz
     }
 
 
-    protected Function<Integer, Optional<String>> checkForThreeDigit()
-    {
-        return (numberToTransform) -> {
-            return Optional.empty();
-        };
-    }
 
 
     /**
@@ -141,6 +135,16 @@ public class FizzBuzz
     protected Predicate<StringBuffer> stopIfAlreadyHaveResult()
     {
         return (currentResult) -> (currentResult != null && currentResult.length() > 0);
+    }
+
+    /**
+     * Return the list of steps to process
+     *
+     * @return
+     */
+    protected List<Object> getSteps()
+    {
+        return STEPS;
     }
 
     /**
