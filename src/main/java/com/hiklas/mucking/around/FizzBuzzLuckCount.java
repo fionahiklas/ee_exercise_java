@@ -20,7 +20,12 @@ public class FizzBuzzLuckCount extends FizzBuzzLuck {
     public String outputStatistics() {
         StringBuffer outputBuffer = new StringBuffer();
 
-        outputBuffer.append('\n');
+        outputBuffer.append(String.format("fizz: %d\n", fizzCount));
+        outputBuffer.append(String.format("buzz: %d\n", buzzCount));
+        outputBuffer.append(String.format("fizzbuzz: %d\n", fizzBuzzCount));
+        outputBuffer.append(String.format("luck: %d\n", luckCount));
+        outputBuffer.append(String.format("number: %d\n", digitCount));
+
         return outputBuffer.toString();
     }
 }

@@ -11,6 +11,9 @@ import static org.junit.Assert.assertThat;
 
 public class FizzBuzzLuckCountTest
 {
+    public static final String ZERO_STATISTICS_OUTPUT =
+            "fizz: 0\nbuzz: 0\nfizzbuzz: 0\nluck: 0\nnumber: 0\n";
+
     private FizzBuzzLuckCount fizzBuzzLuckCountToTest;
 
 
@@ -37,6 +40,16 @@ public class FizzBuzzLuckCountTest
         String result = fizzBuzzLuckCountToTest.outputStatistics();
         assertThat(result, notNullValue());
         assertThat(result.length(), greaterThan(0));
+    }
+
+    @Test
+    public void statisticsOutputNotEmptyAfterProcessingEmptyString()
+    {
+        fizzBuzzLuckCountToTest.processStringOfNumbers("");
+        String result = fizzBuzzLuckCountToTest.outputStatistics();
+        assertThat(result, notNullValue());
+        assertThat(result.length(), greaterThan(0));
+        assertThat(result, equalTo(ZERO_STATISTICS_OUTPUT));
     }
 
 }
