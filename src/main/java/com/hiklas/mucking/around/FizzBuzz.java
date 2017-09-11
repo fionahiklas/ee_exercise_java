@@ -112,6 +112,15 @@ public class FizzBuzz
         };
     }
 
+
+    protected Function<Integer, Optional<String>> checkForThreeDigit()
+    {
+        return (numberToTransform) -> {
+            return Optional.empty();
+        };
+    }
+
+
     /**
      * Return a function that performs a dummy operation, it returns a
      * string version of the number that is passed to it.
@@ -123,6 +132,12 @@ public class FizzBuzz
         return (numberToTransform) -> Optional.of(Integer.toString(numberToTransform));
     }
 
+    /**
+     * Return a predicate that checks some property of the output buffer to decide if
+     * we're done processing a single number
+     *
+     * @return
+     */
     protected Predicate<StringBuffer> stopIfAlreadyHaveResult()
     {
         return (currentResult) -> (currentResult != null && currentResult.length() > 0);

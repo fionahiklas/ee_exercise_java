@@ -374,6 +374,24 @@ public class FizzBuzzTest
         assertThat(result, equalTo("1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz"));
     }
 
+    @Test
+    public void checkForThreeDigitFunctionReturned()
+    {
+        Object checkForThreeDigit = fizzBuzzToTest.checkForThreeDigit();
+
+        assertThat(checkForThreeDigit, notNullValue());
+        assertThat(checkForThreeDigit, instanceOf(Function.class));
+    }
+
+    @Test
+    public void checkForThreeDigitFunction_returnsEmptyForZero()
+    {
+        Optional<String> result = fizzBuzzToTest.checkForThreeDigit().apply(0);
+        assertThat(result.isPresent(), equalTo(false));
+    }
+
+
+
     /**
      * Utility method to create a list of steps
      *
