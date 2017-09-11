@@ -358,6 +358,14 @@ public class FizzBuzzTest
         assertThat(result, equalTo("fizzbuzz"));
     }
 
+    @Test
+    public void processStringOfNumbers_returnsZeroAndFizzBuzzForTwoNumberInput()
+    {
+        String result = fizzBuzzToTest.processStringOfNumbers("0 15");
+        assertThat(result, notNullValue());
+        assertThat(result, equalTo("0 fizzbuzz"));
+    }
+
     /**
      * Utility method to create a list of steps
      *

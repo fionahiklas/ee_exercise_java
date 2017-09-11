@@ -38,6 +38,8 @@ public class FizzBuzz
 
         while(tokeniser.hasMoreTokens())
         {
+            if( outputBuffer.length() > 0 ) outputBuffer.append(" ");
+            
             item = tokeniser.nextToken();
             itemAsInteger = Integer.parseInt(item);
 
