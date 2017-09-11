@@ -12,6 +12,8 @@ public class FizzBuzzLuck extends FizzBuzz
 
     private final List<Object> LUCK_STEPS = new ArrayList<Object>()
     {{
+       add( checkForThreeDigit() );
+       add( stopIfAlreadyHaveResult() );
        add( divideByThreeFunction() );
        add( divideByFiveFunction() );
        add( stopIfAlreadyHaveResult() );
