@@ -24,22 +24,18 @@ public class FizzBuzz
 
         for(Object step:stepsToCheck)
         {
-            // TODO: Refactor the inside of this if into a private function to tidy things up
             if( step instanceof Function) {
-                Function<Integer, Optional<String>> stepFunction = (Function<Integer, Optional<String>>) step;
-                Optional<String> stepResult = stepFunction.apply(numberToProcess);
+                Optional<String> stepResult = processStepFunction(step, numberToProcess);
 
                 if( stepResult.isPresent() ) outputBuffer.append( stepResult.get() );
             }
 
-            // TODO: Refactor the inside of this if into a private function to tidy things up
             if( step instanceof Predicate) {
-                Predicate<StringBuffer> stepPredicate = (Predicate<StringBuffer>) step;
-                boolean shouldStop = stepPredicate.test(outputBuffer);
-
-                if( shouldStop ) break;
+                
+                if( processStepPredicate(step, outputBuffer) ) break;
             }
 
+            // TODO: Handle something other than the above to make code more robust
         }
 
         return outputBuffer.toString();
@@ -106,4 +102,16 @@ public class FizzBuzz
     }
 
 
+    private Optional<String> processStepFunction(Object step, Integer numberToProcess)
+    {
+        Function<Integer, Optional<String>> stepFunction = (Function<Integer, Optional<String>>) step;
+        return stepFunction.apply(numberToProcess);
+    }
+
+
+    private boolean processStepPredicate(Object step, StringBuffer outputBuffer)
+    {
+        Predicate<StringBuffer> stepPredicate = (Predicate<StringBuffer>) step;
+        return stepPredicate.test(outputBuffer);
+    }
 }
