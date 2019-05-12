@@ -21,6 +21,10 @@ public class FizzBuzz
        add( returnNumberAsString() );
     }};
 
+    public static final void main(String[] args) {
+       System.out.println("Hello");
+    }
+
     /**
      * Process a string that is expected to contain integers seperated by
      * spaces.  Pass each number to the the {@link #processStringOfNumbers(String)}
